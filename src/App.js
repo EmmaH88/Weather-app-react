@@ -1,4 +1,5 @@
 import React from "react";
+import Weather from "./Weather";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
@@ -6,8 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>React Weather App</h1>
-        <button className="btn btn-primary">Hello</button>
+        <Weather />
 
         <footer>
           This page is open-sourced on{" "}
