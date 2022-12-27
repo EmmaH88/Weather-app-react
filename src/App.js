@@ -20,7 +20,13 @@ function App() {
           </a>{" "}
           {""}
           hosted on{" "}
-          <a href="https://rad-stardust-3ab6b7.netlify.app">Netlify</a>
+          <a
+            href="https://rad-stardust-3ab6b7.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Netlify
+          </a>
           {""} and coded by Emma H 😍
         </footer>
       </div>
