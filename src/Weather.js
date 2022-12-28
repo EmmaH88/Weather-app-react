@@ -7,6 +7,7 @@ import "./Weather.css";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -17,10 +18,9 @@ export default function Weather(props) {
       city: response.data.name,
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
-      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
     });
   }
-
   function search() {
     const apiKey = "85bcdd2ad2afb7ce15a8242b1ff12dc1";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric
@@ -41,16 +41,13 @@ export default function Weather(props) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
-          <div className="col-9">
-            <input
-              type="search"
-              placeholder="Enter a city..."
-              onChange={handleCityChange}
-            />
-          </div>
-          <div className="col-3">
-            <input type="submit" value="search" className="btn btn-primary " />
-          </div>
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            onChange={handleCityChange}
+          />
+
+          <input type="submit" value="search" className="btn btn-primary " />
         </form>
         <WeatherInfo data={weatherData} />
       </div>
