@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
+import { ThreeCircles } from "react-loader-spinner";
 
 import "./Weather.css";
 
@@ -11,6 +12,7 @@ export default function Weather(props) {
 
   function handleResponse(response) {
     setWeatherData({
+      coordinates: response.data.coord,
       ready: true,
       temperature: response.data.main.temp,
       wind: Math.round(response.data.wind.speed),
@@ -54,11 +56,24 @@ export default function Weather(props) {
         </form>
 
         <WeatherInfo data={weatherData} />
-        <WeatherForecast />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <div>
+        <ThreeCircles
+          height="100"
+          width="100"
+          color="#00bbf0"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="three-circles-rotating"
+        />
+        <p>We are working on it 😁...</p>;
+      </div>
+    );
   }
 }
