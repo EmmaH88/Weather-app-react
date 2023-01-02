@@ -1,13 +1,8 @@
 .Weather {
-  border: 2px solid#0318f5;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   border-radius: 5px;
   color: rgb(48, 40, 40);
-}
-
-.Weather form {
-  margin: 0 auto;
 }
 
 .Weather h1 {
@@ -57,4 +52,8 @@
   position: relative;
   line-height: 1;
   top: -34px;
+}
+
+.Weather .form-control {
+  display: inline-block;
 }
